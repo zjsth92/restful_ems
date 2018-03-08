@@ -1,0 +1,12 @@
+db:
+  image: tutum/mongodb
+  ports: 
+    - 27017:27017
+  environment:
+    - MONGODB_USER=itu_ems
+    - MONGODB_DATABASE=itu_ems
+    - MONGODB_PASS=itu_ems_db
+cache:
+  image: redis
+  ports: 
+    - 6379:6379
