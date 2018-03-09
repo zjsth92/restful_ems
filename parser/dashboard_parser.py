@@ -15,11 +15,11 @@ COURSE_GRADE_XPATH = COURSES_TABLE_XPATH + "/td[6]/text()"
 
 def parse(text):
     tree = html.fromstring(text)
-    # username = getUsername(tree)
+    username = getUsername(tree)
     courses = getCourses(tree)
     trimester = tree.xpath(TRIMESTER_XPATH)[0].lower().replace(" ", "_")
     return {
-        # "username": username,
+        "username": username,
         "courses": courses,
         "trimester": trimester
     }

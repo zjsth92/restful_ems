@@ -1,3 +1,5 @@
 redis
 flask
 pymongo
+lxml
+requests
