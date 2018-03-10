@@ -3,6 +3,7 @@ from lxml import html
 COURSE_WORK_TABLE = "//tr"
 TYPE_XPATH = COURSE_WORK_TABLE + "/td[1]/a"
 TITLE_XPATH = COURSE_WORK_TABLE + "/td[2]/a"
+LINK_XPATH = COURSE_WORK_TABLE + "/td[2]/a/@href"
 POINTS_XPATH = COURSE_WORK_TABLE + "/td[3]"
 AVAILABLE_XPATH = COURSE_WORK_TABLE + "/td[4]"
 DUE_XPATH = COURSE_WORK_TABLE + "/td[5]"
@@ -17,6 +18,7 @@ def parse(text):
     availables = tree.xpath(AVAILABLE_XPATH)
     dues = tree.xpath(DUE_XPATH)
     submits = tree.xpath(SUBMITTED_XPATH)
+    links = tree.xpath(LINK_XPATH)
 
     course_works = []
 
@@ -26,6 +28,7 @@ def parse(text):
             course_works.append({
                 "type": types[i].text,
                 "title": titles[i].text,
+                "link": links[i],
                 "point": points[i].text,
                 "available": availables[i].text,
                 "due": dues[i].text,

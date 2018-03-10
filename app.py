@@ -19,9 +19,6 @@ def login():
     email = request.json['email']
     password = request.json['password']
     result = ems.login(email, password)
-    find_user = User.find_by_email(email)
-    if find_user is None:
-        User.insert(email)
 
     redis_db.setex(result['sessionId'], email, 3600)    
     return jsonify(result)
@@ -40,6 +37,13 @@ def list_courses():
     # sort by due
     courseworks = sorted(courseworks, key = lambda coursework: time.strptime(coursework["due"], TIME_FORMAT))
     return jsonify(courseworks) 
+
+@app.route("/assignment", methods=['GET'])
+def get_assignment_details():
+    session_id = request.args.get('session_id')
+    assignment_link = request.args.get('assignment_link')
+    detail = ems.get_assignment_detail(session_id, assignment_link)
+    return jsonify(detail) 
 
 if __name__ == '__main__':
     app.run(debug=True)
