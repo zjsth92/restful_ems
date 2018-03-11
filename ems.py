@@ -35,8 +35,8 @@ def get_courses(session_id):
     cookies = {'_session_id': session_id}
     session = requests.Session()
     r = session.get("https://ems.itu.edu/student", cookies=cookies)
-    courses = dashboard_parser.parse(r.content)
-    return courses
+    courses_info = dashboard_parser.parse(r.content)
+    return courses_info
 
 def get_course_work(session_id, course):
     course_link = course['link']

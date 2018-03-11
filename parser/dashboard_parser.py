@@ -58,7 +58,7 @@ def get_courses(tree):
 
     courses = []
 
-    for i in range(0, len(course_codes)-1):
+    for i in range(0, len(course_codes)):
         courses.append({
             "code": course_codes[i],
             "section": section_codes[i],

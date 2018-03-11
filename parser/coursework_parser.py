@@ -22,7 +22,7 @@ def parse(text):
 
     course_works = []
 
-    for i in range(0, len(points)-1):
+    for i in range(0, len(points)):
         due = dues[i].text
         if due is not None:
             course_works.append({
