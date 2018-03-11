@@ -9,6 +9,8 @@ import model.course as Course
 import model.user as User
 import db.redis as redis
 
+DEBUG = False
+
 TIME_FORMAT = '%b %d %I:%M %p'
 redis_db = redis.get_redis()
 
@@ -46,4 +48,4 @@ def get_assignment_details():
     return jsonify(detail) 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=DEBUG)
