@@ -38,7 +38,7 @@ POST
 #### Parameters
 
 | Parameter | Description | Data Type |
-|-----------|------|-----|-----------|
+|-----------|-------------|-----------|
 | email | *Required*. The ITU student email |string |
 | password | *Required* | string |
 
@@ -55,7 +55,7 @@ GET
 #### Parameters
 
 | Parameter | Description | Data Type |
-|-----------|------|-----|-----------|
+|-----------|-------------|-----------|
 | session_id | *Required*. Login Session ID |string |
 
 ### Get Assignment Details
@@ -71,6 +71,6 @@ GET
 #### Parameters
 
 | Parameter | Description | Data Type |
-|-----------|------|-----|-----------|
+|-----------|-------------|-----------|
 | session_id | *Required*. Login Session ID |string |
 | assignment_link | *Required*. Assginment link |string |
