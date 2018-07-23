@@ -3,3 +3,5 @@ flask
 pymongo
 lxml
 requests
+pyyaml
+rq

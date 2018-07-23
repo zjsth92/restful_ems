@@ -26,14 +26,15 @@ def login():
     return jsonify(result)
 
 @app.route("/courseworks", methods=['GET'])
-def list_courses():
+def list_courseworks():
     session_id = request.args.get('session_id')
+    trimester = request.args.get('trimester')
     courses_info = ems.get_courses(session_id)
 
     courseworks = []
 
     for course in courses_info['courses']:
-        works = ems.get_course_work(session_id, course)
+        works = ems.get_course_work(session_id, course, trimester)
         courseworks += works
     
     # sort by due

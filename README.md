@@ -15,6 +15,11 @@ Run this app as a simple FLASK APP
 flask run --host=0.0.0.0
 ```
 
+Run backend worker subscribed the queue
+```
+rq worker high_coursework_save high_coursework_update
+```
+
 ## Debug
 
 If you want to enable the debug mode. Please change the value of **Debug** into **True** in ```app.py```, and then run it in python3
@@ -53,7 +58,8 @@ Content Type: **JSON**
     "sessionId": "sessionId",
     "userinfo": {
         "avatar": "https://s3.amazonaws.com/itu.ems.production/avatars/xxxx",
-        "username": "Your Name"
+        "username": "Your Name",
+        "trimester": "summer 2018"
     }
 }
 ```

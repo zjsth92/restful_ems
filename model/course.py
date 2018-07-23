@@ -14,6 +14,6 @@ def insert(trimester, course):
     course['course_id'] = course_id
     db.courses.insert_one(course)
 
-def find_by_code_and_section_and_trimester(code, section, trimester):
+def find_one(code, section, trimester):
     course_id = trimester+'_'+code+'_'+section
-    return db.courses.find_one({"course_id": course_id})
+    return db.courses.find({"course_id": course_id})

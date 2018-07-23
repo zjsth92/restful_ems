@@ -16,23 +16,23 @@ COURSE_GRADE_XPATH = COURSES_TABLE_XPATH + "/td[6]/text()"
 
 
 def parse(text):
+    userinfo = parse_userinfo(text)
     tree = html.fromstring(text)
-    username = get_username(tree)
     courses = get_courses(tree)
-    trimester = tree.xpath(TRIMESTER_XPATH)[0].lower().replace(" ", "_")
     return {
-        "username": username,
+        "userinfo": userinfo,
         "courses": courses,
-        "trimester": trimester
     }
     
 def parse_userinfo(text):
     tree = html.fromstring(text)
     username = get_username(tree)
     avatar = get_avatar(tree)
+    trimester = get_trimester(tree)
     return {
         "username": username,
-        "avatar": avatar
+        "avatar": avatar,
+        "trimester": trimester
     }
 
 def get_username(tree):
@@ -60,7 +60,7 @@ def get_courses(tree):
 
     for i in range(0, len(course_codes)):
         courses.append({
-            "code": course_codes[i],
+            "code": course_codes[i].lower().replace(" ", "_"),
             "section": section_codes[i],
             "name": course_names[i],
             "link": course_links[i],
@@ -69,3 +69,7 @@ def get_courses(tree):
         })
 
     return courses
+
+def get_trimester(tree):
+    trimester = tree.xpath(TRIMESTER_XPATH)[0].lower().replace(" ", "_")
+    return trimester
